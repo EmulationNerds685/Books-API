@@ -8,10 +8,10 @@ const app=express()
 const apiKey = process.env.apikey;
 app.use(bodyParser.urlencoded({extended:true}))
 
-app.post('/book',async(req,res)=>{
+app.get('/book',async(req,res)=>{
     try{
-const bookName=req.body.book
-        const book= await axios.get('https://www.googleapis.com/books/v1/volumes?q=' + req.body.book + '&key=' + apiKey)
+const bookName=req.query.book
+        const book= await axios.get('https://www.googleapis.com/books/v1/volumes?q=' + bookName + '&key=' + apiKey)
        if(book.data.totalItems==0){
         res.send("No Books Found.Try Different Keyword")
        }else{
