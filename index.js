@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.post('/book',async(req,res)=>{
     try{
 const bookName=req.body.book
-        const book= await axios.get('https://www.googleapis.com/books/v1/volumes?q=' + req.body.book +'+subject:horror'+ '&key=' + apiKey)
+        const book= await axios.get('https://www.googleapis.com/books/v1/volumes?q=' + req.body.book + '&key=' + apiKey)
        if(book.data.totalItems==0){
         res.send("No Books Found.Try Different Keyword")
        }else{
