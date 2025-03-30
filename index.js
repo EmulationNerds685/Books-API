@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({extended:true}))
 
 app.get('/book',async(req,res)=>{
     try{
-const bookName=req.query.book
+const bookName=req.query.searchBook
         const book= await axios.get('https://www.googleapis.com/books/v1/volumes?q=' + bookName + '&key=' + apiKey)
        if(book.data.totalItems==0){
         res.send("No Books Found.Try Different Keyword")
